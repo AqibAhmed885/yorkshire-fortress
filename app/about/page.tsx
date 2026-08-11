@@ -1,0 +1,13 @@
+import type { Metadata } from "next";
+import { ArrowRight, Check, Eye, Handshake, ShieldCheck } from "lucide-react";
+import { PageHero } from "../components/PageHero";
+import { SiteFooter } from "../components/SiteFooter";
+import { SiteHeader } from "../components/SiteHeader";
+
+export const metadata: Metadata = { title: "About Us | Yorkshire Fortress Security", description: "A Yorkshire-rooted security company built around professional people, clear standards and dependable service." };
+
+export default function AboutPage() { return <main><SiteHeader /><PageHero eyebrow="About Yorkshire Fortress" title="Strong values. Capable people. Safer places." copy="A Yorkshire-rooted security partner committed to professional standards and dependable protection." image="/media/security-guard.jpg" />
+  <section className="yfs-section yfs-about-story" id="main"><div><p className="yfs-kicker">Our story</p><h2>Built to make professional security feel personal again.</h2></div><div><p className="lead">Yorkshire Fortress Security exists to give clients a more accountable, attentive kind of security service.</p><p>Our approach is straightforward: understand the environment, select the right people, define the standard clearly and stay close enough to respond when circumstances change.</p><p>We bring Yorkshire directness and care to every assignment, whether it is one mobile inspection route or a coordinated guarding and response programme.</p></div></section>
+  <section className="yfs-values-grid"><div><ShieldCheck /><span>01</span><h3>Professional</h3><p>Well-presented, well-briefed people who understand the responsibility placed in them.</p></div><div><Eye /><span>02</span><h3>Vigilant</h3><p>Active observation, useful reporting and early action when something is not right.</p></div><div><Handshake /><span>03</span><h3>Dependable</h3><p>Clear communication and consistent delivery—during routine shifts and unexpected incidents.</p></div></section>
+  <section className="yfs-team-standard"><div><img src="/media/door-supervisors.jpg" alt="Security professional managing a busy public event" /></div><div><p className="yfs-kicker tan">Our people</p><h2>The standard starts with who we put on your site.</h2><p>We look for calm judgement, communication and pride in the job. Site-specific briefings and active supervision help officers understand not only what to do, but why it matters.</p><ul><li><Check /> Role and site-appropriate selection</li><li><Check /> Clear responsibilities and escalation routes</li><li><Check /> Ongoing performance support</li></ul><a href="/services">Explore our services <ArrowRight /></a></div></section>
+  <SiteFooter /></main>; }
