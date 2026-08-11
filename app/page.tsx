@@ -12,7 +12,7 @@ export default function Home() {
         <p className="yfs-kicker tan">Security built around you</p>
         <h1>Protection with Yorkshire strength.</h1>
         <p>Professional guarding, patrol and response services that keep your people, premises and reputation secure.</p>
-        <div className="yfs-hero-actions"><a href="/services">Explore our services <ArrowRight /></a><a href="#contact" className="ghost">Talk to our team</a></div>
+        <div className="yfs-hero-actions"><a href="/services">Explore our services <ArrowRight /></a><a href="/contact" className="ghost">Talk to our team</a></div>
         <div className="yfs-hero-proof"><span><ShieldCheck /> SIA-licensed personnel</span><span><Eye /> Visible, accountable service</span></div>
       </div>
       <div className="yfs-home-visual">

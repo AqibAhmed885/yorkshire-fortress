@@ -24,16 +24,18 @@ test("Next.js build contains every public route", async () => {
   assert.equal(appPaths["/insights/page"], "app/insights/page.js");
   assert.equal(appPaths["/sectors/page"], "app/sectors/page.js");
   assert.equal(appPaths["/services/page"], "app/services/page.js");
+  assert.equal(appPaths["/contact/page"], "app/contact/page.js");
   assert.equal(appPaths["/services/[slug]/page"], "app/services/[slug]/page.js");
   assert.ok(routes.staticRoutes.some((route) => route.page === "/"));
   assert.ok(routes.dynamicRoutes.some((route) => route.page === "/services/[slug]"));
 });
 
 test("keeps the completed site and current framework versions in source", async () => {
-  const [page, data, layout, packageJson, globals, vercelConfig] = await Promise.all([
+  const [page, data, layout, contact, packageJson, globals, vercelConfig] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/data.ts", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/contact/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
     readFile(new URL("../vercel.json", import.meta.url), "utf8"),
@@ -43,6 +45,8 @@ test("keeps the completed site and current framework versions in source", async 
   assert.match(page, /autoPlay muted loop playsInline/);
   assert.match(layout, /Yorkshire Fortress Security/);
   assert.doesNotMatch(page + layout, /codex-preview|_sites-preview|SkeletonPreview/);
+  assert.match(contact, /Let’s plan protection that fits\./);
+  assert.match(contact, /<ContactForm \/>/);
 
   assert.equal((data.match(/\bslug:\s*"/g) ?? []).length, serviceSlugs.length);
   for (const slug of serviceSlugs) {

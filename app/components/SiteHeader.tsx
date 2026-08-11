@@ -8,6 +8,7 @@ const links = [
   { href: "/about", label: "About us" },
   { href: "/sectors", label: "Sectors" },
   { href: "/insights", label: "Insights & news" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function SiteHeader({ solid = false }: { solid?: boolean }) {
@@ -27,7 +28,7 @@ export function SiteHeader({ solid = false }: { solid?: boolean }) {
     <header className={`yfs-header ${solid ? "solid" : ""} ${sticky ? "is-sticky" : ""}`}>
       <div className="yfs-utility">
         <span>Protecting Yorkshire. Supporting the UK.</span>
-        <a href="#contact"><Phone size={14} /> Request a callback</a>
+        <a href="/contact"><Phone size={14} /> Request a callback</a>
       </div>
       <nav className="yfs-nav" aria-label="Main navigation">
         <a href="/" className="yfs-logo" aria-label="Yorkshire Fortress Security home">
@@ -51,7 +52,7 @@ export function SiteHeader({ solid = false }: { solid?: boolean }) {
             </div>}
           </div>
           {links.slice(1).map((link) => <a key={link.href} href={link.href}>{link.label}</a>)}
-          <a className="yfs-nav-cta" href="#contact">Talk to our team <ArrowRight size={17} /></a>
+          <a className="yfs-nav-cta" href="/contact">Talk to our team <ArrowRight size={17} /></a>
         </div>
         <button className="yfs-menu-button" aria-label="Toggle navigation" aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
       </nav>
@@ -60,7 +61,7 @@ export function SiteHeader({ solid = false }: { solid?: boolean }) {
         <button className="yfs-mobile-services-trigger" aria-expanded={servicesOpen} onClick={() => setServicesOpen(!servicesOpen)}>Services<ChevronDown className={servicesOpen ? "open" : ""} size={18} /></button>
         {servicesOpen && <div className="yfs-mobile-services"><a href="/services"><strong>All services</strong><ArrowRight size={17} /></a>{services.map((service) => <a key={service.slug} href={`/services/${service.slug}`}>{service.shortTitle}<ArrowRight size={16} /></a>)}</div>}
         {links.slice(1).map((link) => <a key={link.href} href={link.href}>{link.label}<ArrowRight size={18} /></a>)}
-        <a href="#contact">Talk to our team<ArrowRight size={18} /></a>
+        <a href="/contact">Talk to our team<ArrowRight size={18} /></a>
       </div>}
     </header>
   );
