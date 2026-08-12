@@ -49,6 +49,8 @@ test("keeps the completed site and current framework versions in source", async 
   assert.match(contact, /<ContactForm \/>/);
 
   assert.equal((data.match(/\bslug:\s*"/g) ?? []).length, serviceSlugs.length);
+  assert.equal((data.match(/\bsuitableFor:\s*\[/g) ?? []).length, serviceSlugs.length);
+  assert.equal((data.match(/\bclientReceives:\s*\[/g) ?? []).length, serviceSlugs.length);
   for (const slug of serviceSlugs) {
     assert.match(data, new RegExp(`slug: "${slug}"`));
   }
