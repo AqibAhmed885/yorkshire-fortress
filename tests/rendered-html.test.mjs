@@ -60,8 +60,13 @@ test("keeps the completed site and current framework versions in source", async 
   assert.match(packageJson, /"build": "next build --webpack"/);
   assert.match(packageJson, /"tailwindcss": "4\.3\.3"/);
   assert.match(packageJson, /"vinext": "1\.0\.0-beta\.4"/);
-  assert.match(globals, /font-family:"Gilroy"/);
+  assert.match(globals, /font-family:\s*"Gilroy"/);
   assert.match(globals, /\/fonts\/gilroy-light\.otf/);
   assert.match(globals, /\/fonts\/gilroy-extra-bold\.otf/);
+  assert.match(globals, /@import "tailwindcss"/);
+  assert.match(globals, /@theme/);
+  assert.doesNotMatch(globals, /\.yfs-/);
+  assert.doesNotMatch(page + contact, /className="yfs-/);
+  assert.match(page, /bg-navy-deep/);
   assert.equal(JSON.parse(vercelConfig).framework, "nextjs");
 });
