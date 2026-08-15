@@ -61,8 +61,11 @@ test("keeps the completed site and current framework versions in source", async 
   assert.match(packageJson, /"tailwindcss": "4\.3\.3"/);
   assert.match(packageJson, /"vinext": "1\.0\.0-beta\.4"/);
   assert.match(globals, /font-family:\s*"Gilroy"/);
-  assert.match(globals, /\/fonts\/gilroy-light\.otf/);
-  assert.match(globals, /\/fonts\/gilroy-extra-bold\.otf/);
+  assert.match(globals, /\/fonts\/Gilroy-Thin\.woff2/);
+  assert.match(globals, /\/fonts\/Gilroy-Regular\.woff2/);
+  assert.match(globals, /\/fonts\/Gilroy-HeavyItalic\.woff2/);
+  assert.equal((globals.match(/@font-face/g) ?? []).length, 20);
+  assert.doesNotMatch(globals, /Jost|\.otf/);
   assert.match(globals, /@import "tailwindcss"/);
   assert.match(globals, /@theme/);
   assert.doesNotMatch(globals, /\.yfs-/);
