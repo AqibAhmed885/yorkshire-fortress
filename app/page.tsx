@@ -30,9 +30,9 @@ export default function Home() {
     <main>
       <SiteHeader />
 
-      <section className="relative grid min-h-[810px] grid-cols-[.92fr_1.08fr] overflow-hidden bg-navy-deep text-white max-lg:flex max-lg:min-h-0 max-lg:flex-col max-lg:pt-[126px]" id="top">
-        <div className="relative z-10 self-center py-[190px] pr-[5vw] pl-[max(24px,calc((100vw_-_1240px)/2))] max-lg:order-2 max-lg:px-6 max-lg:py-[70px] max-sm:px-[18px] max-sm:py-[55px]">
-          <Heading as="h1" className="max-w-[720px] " size="lg" tone="white">
+      <section className="relative grid min-h-screen grid-cols-[1fr_1fr] overflow-hidden bg-navy-deep text-white max-lg:flex max-lg:min-h-0 max-lg:flex-col max-lg:pt-[126px]" id="top">
+        <div className="relative z-10 self-center py-[190px] pr-[5vw] pl-[max(24px,calc((100vw_-_1440px)/2))] max-lg:order-2 max-lg:px-6 max-lg:py-[70px] max-sm:px-[18px] max-sm:py-[55px]">
+          <Heading as="h1" className="max-w-[720px] " size="xl" tone="white">
             Protection with<br />Yorkshire strength.
           </Heading>
           <Paragraph className="mt-7 max-w-[610px]" size="lead" tone="light">
@@ -84,7 +84,7 @@ export default function Home() {
         <div className="grid grid-cols-4 gap-3 max-lg:grid-cols-2 max-sm:grid-cols-1">{sectors.slice(0, 4).map((sector, index) => <ImageCard description={sector.copy} href="/sectors" image={sector.image} index={index} key={sector.title} title={sector.title} />)}</div>
       </Container>
 
-      <section className="grid grid-cols-3 bg-paper px-[max(24px,calc((100vw_-_1240px)/2))] py-[65px] max-md:grid-cols-1 max-md:gap-8">{metrics.map((metric) => <Metric {...metric} key={metric.title} />)}</section>
+      <section className="grid grid-cols-3 bg-paper px-[max(24px,calc((100vw_-_1440px)/2))] py-[65px] max-md:grid-cols-1 max-md:gap-8">{metrics.map((metric) => <Metric {...metric} key={metric.title} />)}</section>
 
       <Container>
         <SectionHeader action={<Button href="/insights" variant="text-navy">View all insights <ArrowRight size={18} /></Button>} eyebrow="Insights & news" title="Practical thinking for safer places." />

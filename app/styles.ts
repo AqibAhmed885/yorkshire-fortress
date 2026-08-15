@@ -1,4 +1,4 @@
-export const section = "mx-auto w-[calc(100%_-_48px)] max-w-[1240px] py-[110px] max-sm:w-[calc(100%_-_32px)] max-sm:py-[75px]";
+export const section = "mx-auto w-[calc(100%_-_48px)] max-w-[1440px] py-[110px] max-sm:w-[calc(100%_-_32px)] max-sm:py-[75px]";
 export const kicker = "mb-3.5 text-xs font-extrabold uppercase tracking-[.18em] text-navy";
 export const kickerTan = "mb-3.5 text-xs font-extrabold uppercase tracking-[.18em] text-tan";
 export const sectionHeading = "m-0 text-[clamp(38px,4vw,46px)] leading-[1] font-medium text-navy max-sm:text-[39px]";

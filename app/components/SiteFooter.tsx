@@ -11,7 +11,7 @@ export function SiteFooter({ hideContactBand = false }: { hideContactBand?: bool
           <a className={`${primaryButton} shrink-0`} href="/contact">Request a security review <ArrowUpRight /></a>
         </div>
       )}
-      <div className="mx-auto grid w-[calc(100%_-_48px)] max-w-[1240px] grid-cols-[1.5fr_.7fr_1.2fr] gap-[8vw] py-[75px] max-lg:grid-cols-2 max-sm:w-[calc(100%_-_32px)] max-sm:grid-cols-1">
+      <div className="mx-auto grid w-[calc(100%_-_48px)] max-w-[1440px] grid-cols-[1.5fr_.7fr_1.2fr] gap-[8vw] py-[75px] max-lg:grid-cols-2 max-sm:w-[calc(100%_-_32px)] max-sm:grid-cols-1">
         <div className="max-lg:col-span-2 max-sm:col-span-1">
           <img className="w-[260px]" src="/brand/logo-light.png" alt="Yorkshire Fortress Security" />
           <p className="max-w-[380px] text-sm text-[#aaa]">Professional guarding, patrol and response services designed around your organisation.</p>
