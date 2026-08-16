@@ -48,9 +48,9 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="relative min-h-[810px] overflow-hidden rounded-l-[50%] max-lg:order-1 max-lg:min-h-[500px] max-lg:rounded-t-[260px] max-lg:rounded-b-none max-sm:min-h-[390px] max-sm:rounded-t-[195px]">
-          <video className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden" autoPlay muted loop playsInline preload="metadata" poster="/media/security-patrol-poster.jpg" aria-hidden="true"><source src="/media/security-patrol.mp4" type="video/mp4" /></video>
-          <img className="absolute inset-0 hidden h-full w-full object-cover motion-reduce:block" src="/media/security-patrol-poster.jpg" alt="Security officers patrolling a commercial environment" />
+        <div className="relative min-h-[810px] overflow-hidden rounded-tl-[50%] max-lg:order-1 max-lg:min-h-[500px] max-lg:rounded-t-[260px] max-lg:rounded-b-none max-sm:min-h-[390px] max-sm:rounded-t-[195px]">
+          <video className="absolute inset-0 h-full  w-full object-cover motion-reduce:hidden" autoPlay muted loop playsInline preload="metadata" poster="/media/security-patrol-poster.jpg" aria-hidden="true"><source src="/media/security-patrol.mp4" type="video/mp4" /></video>
+          <img className="absolute inset-0 -bottom-16 hidden h-full w-full object-cover motion-reduce:block" src="/media/security-patrol-poster.jpg" alt="Security officers patrolling a commercial environment" />
           <span className="absolute inset-0 bg-linear-to-t from-black/45 via-transparent to-black/10" />
           <div className="absolute right-[7%] bottom-[7%] flex items-center gap-4 border-l-4 border-tan bg-navy-deep/90 px-5 py-4 backdrop-blur">
             <img className="w-11" src="/brand/mark-light.png" alt="" />
@@ -60,9 +60,23 @@ export default function Home() {
       </section>
 
       <Container id="main">
-        <SectionHeader title={<>Six services.<br />One dependable team.</>}>
-          <Paragraph className="mt-6 max-w-[760px]" size="lead">Yorkshire Fortress Security provides focused protection for organisations that need standards they can see and people they can trust.</Paragraph>
-          <Paragraph className="mb-0 max-w-[720px]" tone="muted">Choose a single service or combine guarding, patrol and response into one joined-up security plan.</Paragraph>
+        <SectionHeader
+          title={<>Six services.<br />One dependable team.</>}
+          className=""
+        >
+          <div>
+            <Paragraph
+              className=" max-w-[760px]"
+              size="lead">
+              Yorkshire Fortress Security provides focused protection for organisations that need standards they can see and people they can trust.
+            </Paragraph>
+            <Paragraph
+              className="mb-0 max-w-[720px]"
+              tone="muted">
+              Choose a single service or combine guarding, patrol and response into one joined-up security plan.
+            </Paragraph>
+          </div>
+          
         </SectionHeader>
         <ServiceGrid />
         <div className="mt-9 flex justify-end"><Button href="/services" variant="text-navy">View all six services <ArrowRight size={18} /></Button></div>
@@ -84,7 +98,7 @@ export default function Home() {
         <div className="grid grid-cols-4 gap-3 max-lg:grid-cols-2 max-sm:grid-cols-1">{sectors.slice(0, 4).map((sector, index) => <ImageCard description={sector.copy} href="/sectors" image={sector.image} index={index} key={sector.title} title={sector.title} />)}</div>
       </Container>
 
-      <section className="grid grid-cols-3 bg-paper px-[max(24px,calc((100vw_-_1440px)/2))] py-[65px] max-md:grid-cols-1 max-md:gap-8">{metrics.map((metric) => <Metric {...metric} key={metric.title} />)}</section>
+      <section className="grid grid-cols-3 bg-paper px-[max(24px,calc((100vw_-_1240px)/2))] py-[65px] max-md:grid-cols-1 max-md:gap-8">{metrics.map((metric) => <Metric {...metric} key={metric.title} />)}</section>
 
       <Container>
         <SectionHeader action={<Button href="/insights" variant="text-navy">View all insights <ArrowRight size={18} /></Button>} eyebrow="Insights & news" title="Practical thinking for safer places." />
