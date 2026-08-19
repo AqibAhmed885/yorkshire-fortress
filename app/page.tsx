@@ -63,7 +63,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="relative min-h-[810px] overflow-hidden rounded-tl-[50%] max-lg:order-1 max-lg:min-h-[500px] max-lg:rounded-t-[260px] max-lg:rounded-b-none max-sm:min-h-[390px] max-sm:rounded-t-[195px]">
+        <div className="relative min-h-[810px] overflow-hidden rounded-bl-[50%] max-lg:order-1 max-lg:min-h-[500px] max-lg:rounded-t-[260px] max-lg:rounded-b-none max-sm:min-h-[390px] max-sm:rounded-t-[195px]">
           <video
             className="absolute inset-0 h-full  w-full object-cover motion-reduce:hidden"
             autoPlay
