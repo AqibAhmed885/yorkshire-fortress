@@ -23,7 +23,7 @@ export default function InsightsPage() {
       <PageHero
         eyebrow="Insights & news"
         title="Practical guidance for safer places."
-        copy="Clear thinking on guarding, response, patrols, events and the risks security leaders face every day."
+        copy="Clear thinking on guarding, vacant property inspection, response, events and the risks security leaders face every day."
         image="/media/alarm-response.jpg"
       />
 

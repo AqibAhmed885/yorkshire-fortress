@@ -1,11 +1,11 @@
-import { BellRing, CarFront, Castle, KeyRound, ShieldCheck, TicketCheck } from "lucide-react";
+import { BellRing, Building2, Castle, KeyRound, ShieldCheck, TicketCheck } from "lucide-react";
 
 const icons = {
   shield: ShieldCheck,
   key: KeyRound,
   bell: BellRing,
   badge: Castle,
-  car: CarFront,
+  building: Building2,
   event: TicketCheck,
 };
 

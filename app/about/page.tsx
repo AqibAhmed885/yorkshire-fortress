@@ -90,7 +90,7 @@ export default function AboutPage() {
         <div className="space-y-5 text-muted">
           <p className="text-[21px] leading-[1.46] font-semibold text-onyx">
             Yorkshire Fortress Security is a Yorkshire-rooted security company providing guarding,
-            key holding, alarm response, door supervision, vehicle patrol inspections and event
+            key holding, alarm response, door supervision, vacant property inspection and event
             security.
           </p>
           <p>
@@ -100,7 +100,7 @@ export default function AboutPage() {
           </p>
           <p>
             That may mean a dedicated guarding presence during operating hours, controlled access
-            outside them, mobile checks across several properties or a planned team for a busy
+            outside them, scheduled checks of an unoccupied property or a planned team for a busy
             event. Services can stand alone or work together under one coordinated approach.
           </p>
           <p>

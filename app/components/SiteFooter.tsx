@@ -21,7 +21,6 @@ export function SiteFooter({ hideContactBand = false }: { hideContactBand?: bool
         </div>
       )}
       <footer className="bg-onyx text-white" id="contact">
-        
         <div className="mx-auto grid w-[calc(100%_-_48px)] pt-36 max-w-[1440px] grid-cols-[1.5fr_.7fr_1.2fr] gap-[8vw] py-[75px] max-lg:grid-cols-2 max-sm:w-[calc(100%_-_32px)] max-sm:grid-cols-1">
           <div className="max-lg:col-span-2 max-sm:col-span-1">
             <img
@@ -30,7 +29,8 @@ export function SiteFooter({ hideContactBand = false }: { hideContactBand?: bool
               alt="Yorkshire Fortress Security"
             />
             <p className="max-w-[380px] text-sm text-[#aaa]">
-              Professional guarding, patrol and response services designed around your organisation.
+              Professional guarding, vacant property inspection and response services designed
+              around your organisation.
             </p>
           </div>
           <div className="flex flex-col gap-3">
@@ -83,6 +83,5 @@ export function SiteFooter({ hideContactBand = false }: { hideContactBand?: bool
         </div>
       </footer>
     </>
-    
   );
 }

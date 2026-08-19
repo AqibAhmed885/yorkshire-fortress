@@ -72,8 +72,8 @@ export default function SectorsPage() {
             Not sure which services fit your site?
           </h2>
           <p className="mb-0 max-w-[850px] text-muted">
-            We can review your environment and recommend a proportionate mix of people, patrols and
-            response cover.
+            We can review your environment and recommend a proportionate mix of people, property
+            inspections and response cover.
           </p>
         </div>
         <a className={`${navyButton} shrink-0`} href="/contact">

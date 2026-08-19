@@ -8,7 +8,7 @@ Official website for Yorkshire Fortress Security, built with Next.js App Router,
 - Key Holding
 - Alarm Response
 - Door Supervisors
-- Vehicle Patrol Inspections / Mobile Patrols
+- Vacant Property Inspection
 - Event Security
 
 ## Technology

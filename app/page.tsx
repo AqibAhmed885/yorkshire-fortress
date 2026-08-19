@@ -49,8 +49,8 @@ export default function Home() {
             Yorkshire strength.
           </Heading>
           <Paragraph className="mt-7 max-w-[610px]" size="lead" tone="light">
-            Professional guarding, patrol and response services that keep your people, premises and
-            reputation secure.
+            Professional guarding, vacant property inspection and response services that keep your
+            people, premises and reputation secure.
           </Paragraph>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button href="/services" size="large">
@@ -119,8 +119,8 @@ export default function Home() {
               standards they can see and people they can trust.
             </Paragraph>
             <Paragraph className="mb-0 max-w-[720px]" tone="muted">
-              Choose a single service or combine guarding, patrol and response into one joined-up
-              security plan.
+              Choose a single service or combine guarding, vacant property inspection and response
+              into one joined-up security plan.
             </Paragraph>
           </div>
         </SectionHeader>
@@ -161,7 +161,6 @@ export default function Home() {
             alt="Security officer protecting a client site"
           />
         </div>
-        
       </section>
 
       <section className="relative overflow-hidden bg-paper">
@@ -178,7 +177,6 @@ export default function Home() {
           </div>
 
           <div>
-            
             <Heading className="max-w-[720px]">
               Smart Technology.
               <br />
@@ -221,7 +219,6 @@ export default function Home() {
               ))}
             </div>
           </div>
-
         </Container>
       </section>
 

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { ArrowLeft, ArrowRight, Check, ChevronRight, Clock, UserRound } from "lucide-react";
 import Link from "next/link";
 import { SiteFooter } from "../../components/SiteFooter";
@@ -14,13 +14,18 @@ import { insights } from "../../data";
 
 type InsightPageProps = { params: Promise<{ slug: string }> };
 
+const legacyInsightSlugs: Record<string, string> = {
+  "vehicle-patrol-inspection-checklist": "vacant-property-inspection-checklist",
+};
+
 export function generateStaticParams() {
   return insights.map((insight) => ({ slug: insight.slug }));
 }
 
 export async function generateMetadata({ params }: InsightPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const insight = insights.find((item) => item.slug === slug);
+  const canonicalSlug = legacyInsightSlugs[slug] ?? slug;
+  const insight = insights.find((item) => item.slug === canonicalSlug);
   if (!insight) return {};
 
   const requestHeaders = await headers();
@@ -48,10 +53,12 @@ export async function generateMetadata({ params }: InsightPageProps): Promise<Me
 
 export default async function InsightDetailPage({ params }: InsightPageProps) {
   const { slug } = await params;
-  const insight = insights.find((item) => item.slug === slug);
+  const canonicalSlug = legacyInsightSlugs[slug] ?? slug;
+  if (canonicalSlug !== slug) redirect(`/insights/${canonicalSlug}`);
+  const insight = insights.find((item) => item.slug === canonicalSlug);
   if (!insight) notFound();
 
-  const related = insights.filter((item) => item.slug !== slug).slice(0, 3);
+  const related = insights.filter((item) => item.slug !== canonicalSlug).slice(0, 3);
 
   return (
     <main>

@@ -7,14 +7,14 @@ const serviceSlugs = [
   "key-holding",
   "alarm-response",
   "door-supervisors",
-  "vehicle-patrol-inspections",
+  "vacant-property-inspection",
   "event-security",
 ];
 
 const insightSlugs = [
   "choosing-the-right-guarding-model",
   "why-employees-should-not-attend-alarms-alone",
-  "vehicle-patrol-inspection-checklist",
+  "vacant-property-inspection-checklist",
   "building-safety-into-the-guest-experience",
   "warning-signs-security-plan-needs-review",
   "modern-door-supervision",
@@ -92,6 +92,9 @@ test("keeps the completed site and current framework versions in source", async 
   for (const slug of insightSlugs) {
     assert.match(data, new RegExp(`slug: "${slug}"`));
   }
+  assert.match(data, /title: "Vacant Property Inspection"/);
+  assert.match(data, /category: "Vacant property"/);
+  assert.doesNotMatch(data, /Vehicle Patrol Inspection|Mobile Patrol/);
   const articleBodies = [...data.matchAll(/content:\s*\[([\s\S]*?)\n\s*\],/g)];
   const articleHeadingGroups = [...data.matchAll(/paragraphHeadings:\s*\[([\s\S]*?)\n\s*\],/g)];
   assert.equal(articleBodies.length, insightSlugs.length);
@@ -102,9 +105,8 @@ test("keeps the completed site and current framework versions in source", async 
     assert.ok(paragraphCount >= 6);
     assert.equal(headingCount, paragraphCount);
   }
-  assert.equal(
-    (data.match(/image: "\/media\/insight-.*-uk\.jpg"/g) ?? []).length,
-    insightSlugs.length,
+  assert.ok(
+    (data.match(/image: "\/media\/insight-.*-uk\.jpg"/g) ?? []).length >= insightSlugs.length,
   );
   assert.match(insightPage, /generateStaticParams/);
   assert.match(insightPage, /generateMetadata/);

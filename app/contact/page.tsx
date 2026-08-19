@@ -8,7 +8,7 @@ import { kicker, kickerTan, lead, sectionHeading } from "../styles";
 export const metadata: Metadata = {
   title: "Contact Yorkshire Fortress Security",
   description:
-    "Request a security review for guarding, key holding, alarm response, door supervision, mobile patrols or event security.",
+    "Request a security review for guarding, key holding, alarm response, door supervision, vacant property inspection or event security.",
 };
 const steps = [
   {

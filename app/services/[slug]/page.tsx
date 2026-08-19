@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import {
   ArrowRight,
   Building2,
@@ -15,6 +15,10 @@ import { services } from "../../data";
 import { kicker, kickerTan, navyButton, sectionHeading } from "../../styles";
 import Link from "next/link";
 
+const legacyServiceSlugs: Record<string, string> = {
+  "vehicle-patrol-inspections": "vacant-property-inspection",
+};
+
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
 }
@@ -24,7 +28,8 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const service = services.find((item) => item.slug === slug);
+  const canonicalSlug = legacyServiceSlugs[slug] ?? slug;
+  const service = services.find((item) => item.slug === canonicalSlug);
   return service
     ? { title: `${service.title} | Yorkshire Fortress Security`, description: service.summary }
     : {};
@@ -32,9 +37,11 @@ export async function generateMetadata({
 
 export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const service = services.find((item) => item.slug === slug);
+  const canonicalSlug = legacyServiceSlugs[slug] ?? slug;
+  if (canonicalSlug !== slug) redirect(`/services/${canonicalSlug}`);
+  const service = services.find((item) => item.slug === canonicalSlug);
   if (!service) notFound();
-  const currentIndex = services.findIndex((item) => item.slug === slug);
+  const currentIndex = services.findIndex((item) => item.slug === canonicalSlug);
   const next = services[(currentIndex + 1) % services.length];
   return (
     <main>

@@ -9,7 +9,7 @@ import { kicker, kickerTan, lead, primaryButton, section, sectionHeading } from 
 export const metadata: Metadata = {
   title: "Security Services | Yorkshire Fortress Security",
   description:
-    "Security guards, key holding, alarm response, door supervisors, vehicle patrol inspections and event security.",
+    "Security guards, key holding, alarm response, door supervisors, vacant property inspection and event security.",
 };
 
 export default function ServicesPage() {
@@ -26,7 +26,7 @@ export default function ServicesPage() {
         eyebrow="Our services"
         title="Protection that fits the way you operate."
         copy="Six focused security services, delivered individually or combined into one coordinated plan."
-        image="/media/mobile-patrol.jpg"
+        image="/media/insight-security-review-uk.jpg"
       />
       <section className={section} id="main">
         <div className="mb-14 grid grid-cols-[.9fr_1.1fr] gap-[10vw] max-lg:grid-cols-1 max-lg:gap-6">
@@ -76,8 +76,8 @@ export default function ServicesPage() {
               Need more than one service?
             </h2>
             <p className="mb-0 max-w-[800px] text-muted">
-              Combine guarding, key holding, alarm response and mobile patrols under one accountable
-              security partner.
+              Combine guarding, key holding, alarm response and vacant property inspection under one
+              accountable security partner.
             </p>
           </span>
         </div>

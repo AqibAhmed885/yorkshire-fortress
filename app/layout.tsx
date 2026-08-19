@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const origin = `${host.includes("localhost") ? "http" : "https"}://${host}`;
   const title = "Yorkshire Fortress Security | Professional Security Services";
   const description =
-    "Security guards, key holding, alarm response, door supervisors, vehicle patrol inspections and event security.";
+    "Security guards, key holding, alarm response, door supervisors, vacant property inspection and event security.";
   return {
     title,
     description,
