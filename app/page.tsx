@@ -133,13 +133,6 @@ export default function Home() {
       </Container>
 
       <section className="grid grid-cols-2 bg-navy text-white max-lg:grid-cols-1">
-        <div className="min-h-[670px] max-lg:min-h-[500px] max-sm:min-h-[390px]">
-          <img
-            className="h-full w-full object-cover object-bottom-right"
-            src="/media/security-guard.jpeg"
-            alt="Security officer protecting a client site"
-          />
-        </div>
         <div className="flex flex-col justify-center px-[clamp(35px,7vw,110px)] py-[90px]">
           {/* <Eyebrow className="text-tan">The Fortress standard</Eyebrow> */}
           <Heading className="max-w-[680px]" tone="white">
@@ -161,14 +154,31 @@ export default function Home() {
             Why clients choose us <ArrowRight size={18} />
           </Button>
         </div>
+        <div className="min-h-[670px] max-lg:min-h-[500px] max-sm:min-h-[390px]">
+          <img
+            className="h-full w-full object-cover object-bottom-right"
+            src="/media/security-guard.jpeg"
+            alt="Security officer protecting a client site"
+          />
+        </div>
+        
       </section>
 
       <section className="relative overflow-hidden bg-paper">
-        <Container className="grid grid-cols-[1.08fr_.92fr] items-center gap-[8vw] max-lg:grid-cols-1">
+        <Container className="grid grid-cols-[.92fr_1.08fr] items-center gap-[8vw] max-lg:grid-cols-1">
+          <div className="relative mx-auto flex w-full max-w-[590px] items-center justify-center py-2 max-lg:mt-10">
+            <span className="absolute top-[8%] -right-[8%] h-48 w-48 rounded-full bg-tan/25 max-sm:right-0" />
+            <span className="absolute bottom-[5%] -left-[5%] h-40 w-40 rounded-full border-[30px] border-navy/8 max-sm:left-0" />
+            <span className="absolute top-1/2 right-[2%] left-[2%] h-3/5 -translate-y-1/2 rounded-[48%] bg-navy/5 blur-3xl" />
+            <img
+              className="relative z-10 h-auto max-h-[790px] w-full object-contain drop-shadow-[0_35px_35px_rgba(16,31,50,.22)]"
+              src="/media/app.png"
+              alt="Fortress Control mobile security management app showing live officer status, patrol checkpoints and incident reports"
+            />
+          </div>
+
           <div>
-            <p className="mb-5 text-xs font-extrabold uppercase tracking-[.18em] text-tan">
-              Technology-led oversight
-            </p>
+            
             <Heading className="max-w-[720px]">
               Smart Technology.
               <br />
@@ -212,16 +222,6 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative mx-auto flex w-full max-w-[590px] items-center justify-center py-2 max-lg:mt-10">
-            <span className="absolute top-[8%] -right-[8%] h-48 w-48 rounded-full bg-tan/25 max-sm:right-0" />
-            <span className="absolute bottom-[5%] -left-[5%] h-40 w-40 rounded-full border-[30px] border-navy/8 max-sm:left-0" />
-            <span className="absolute top-1/2 right-[2%] left-[2%] h-3/5 -translate-y-1/2 rounded-[48%] bg-navy/5 blur-3xl" />
-            <img
-              className="relative z-10 h-auto max-h-[790px] w-full object-contain drop-shadow-[0_35px_35px_rgba(16,31,50,.22)]"
-              src="/media/security-management-app-v1.png"
-              alt="Fortress Control mobile security management app showing live officer status, patrol checkpoints and incident reports"
-            />
-          </div>
         </Container>
       </section>
 
