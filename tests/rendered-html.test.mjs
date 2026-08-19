@@ -72,6 +72,11 @@ test("keeps the completed site and current framework versions in source", async 
   assert.doesNotMatch(page + layout, /codex-preview|_sites-preview|SkeletonPreview/);
   assert.match(contact, /Let’s plan protection that fits\./);
   assert.match(contact, /<ContactForm \/>/);
+  assert.match(contact, /tel:\+447435677545/);
+  assert.match(contact, /07435 677545/);
+  assert.match(page, /Smart Technology\./);
+  assert.match(page, /dedicated security management app/);
+  assert.match(page, /Live officer visibility/);
 
   assert.equal(
     (data.match(/\bslug:\s*"/g) ?? []).length,

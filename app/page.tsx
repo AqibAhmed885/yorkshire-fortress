@@ -1,4 +1,15 @@
-import { ArrowRight, Castle, Check, Eye, MapPin, ShieldCheck } from "lucide-react";
+import {
+  Activity,
+  ArrowRight,
+  Castle,
+  Check,
+  ClipboardCheck,
+  Eye,
+  MapPin,
+  Radio,
+  ShieldCheck,
+  Smartphone,
+} from "lucide-react";
 import { ServiceGrid } from "./components/ServiceGrid";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
@@ -152,6 +163,129 @@ export default function Home() {
             Why clients choose us <ArrowRight size={18} />
           </Button>
         </div>
+      </section>
+
+      <section className="relative overflow-hidden bg-paper">
+        <Container className="grid grid-cols-[1.08fr_.92fr] items-center gap-[8vw] max-lg:grid-cols-1">
+          <div>
+            <p className="mb-5 text-xs font-extrabold uppercase tracking-[.18em] text-tan">
+              Technology-led oversight
+            </p>
+            <Heading className="max-w-[720px]">
+              Smart Technology.
+              <br />
+              Better Security.
+            </Heading>
+            <Paragraph className="mt-7 max-w-[740px]" size="lead">
+              Our dedicated security management app allows us to monitor and manage our security
+              officers in real time, helping us ensure they are where they need to be and carrying
+              out their duties effectively.
+            </Paragraph>
+            <Paragraph className="max-w-[740px]" tone="muted">
+              This technology gives our management team greater oversight, faster response and
+              improved accountability—helping us deliver a safer, more secure environment for your
+              premises.
+            </Paragraph>
+
+            <div className="mt-9 grid grid-cols-3 gap-3 max-md:grid-cols-1">
+              {[
+                {
+                  icon: MapPin,
+                  title: "Live officer visibility",
+                  copy: "Real-time oversight of attendance and assigned locations.",
+                },
+                {
+                  icon: ClipboardCheck,
+                  title: "Verified activity",
+                  copy: "Clear records of patrol checks and completed site duties.",
+                },
+                {
+                  icon: Radio,
+                  title: "Faster response",
+                  copy: "Quicker management awareness when attention is required.",
+                },
+              ].map(({ icon: Icon, title, copy }) => (
+                <article className="border-t-4 border-tan bg-white p-5" key={title}>
+                  <Icon className="mb-5 text-navy" size={25} />
+                  <h3 className="mb-2 text-base font-extrabold text-navy">{title}</h3>
+                  <p className="m-0 text-sm leading-[1.6] text-muted">{copy}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative mx-auto w-full max-w-[470px] py-5">
+            <span className="absolute top-[8%] -right-[16%] h-48 w-48 rounded-full bg-tan/20 max-sm:-right-[5%]" />
+            <span className="absolute bottom-[4%] -left-[13%] h-36 w-36 rounded-full border-[28px] border-navy/8 max-sm:-left-[3%]" />
+            <div className="relative rounded-[48px] border-[9px] border-navy-deep bg-navy-deep p-3 shadow-[0_35px_80px_rgba(16,31,50,.22)]">
+              <div className="absolute top-3 left-1/2 z-10 h-5 w-28 -translate-x-1/2 rounded-full bg-navy-deep" />
+              <div className="overflow-hidden rounded-[32px] bg-[#f5f6f7]">
+                <div className="bg-navy px-6 pt-12 pb-7 text-white">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <span className="grid h-10 w-10 place-items-center rounded-full bg-tan text-navy-deep">
+                        <Smartphone size={21} />
+                      </span>
+                      <span>
+                        <small className="block text-[10px] uppercase tracking-[.15em] text-white/55">
+                          Fortress Control
+                        </small>
+                        <strong className="text-sm">Live operations</strong>
+                      </span>
+                    </div>
+                    <span className="flex items-center gap-2 text-[11px] font-bold text-[#bce5cb]">
+                      <span className="h-2 w-2 rounded-full bg-[#64d793]" /> Live
+                    </span>
+                  </div>
+                </div>
+                <div className="p-5">
+                  <div className="rounded-2xl bg-white p-5 shadow-[0_12px_35px_rgba(16,31,50,.08)]">
+                    <div className="flex items-start justify-between gap-4">
+                      <span>
+                        <small className="block text-[10px] font-bold uppercase tracking-[.14em] text-muted">
+                          Officer management
+                        </small>
+                        <strong className="mt-1 block text-lg text-navy">
+                          Site coverage active
+                        </strong>
+                      </span>
+                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#e8f5ed] text-[#23834a]">
+                        <ShieldCheck size={21} />
+                      </span>
+                    </div>
+                    <div className="mt-5 h-2 overflow-hidden rounded-full bg-[#e5e8eb]">
+                      <span className="block h-full w-[82%] rounded-full bg-tan" />
+                    </div>
+                  </div>
+
+                  <div className="mt-4 grid gap-3">
+                    {[
+                      { icon: MapPin, label: "Location status", value: "On site" },
+                      { icon: ClipboardCheck, label: "Assigned duties", value: "In progress" },
+                      { icon: Activity, label: "Management updates", value: "Connected" },
+                    ].map(({ icon: Icon, label, value }) => (
+                      <div
+                        className="flex items-center gap-3 rounded-xl border border-[#e1e4e7] bg-white p-4"
+                        key={label}
+                      >
+                        <span className="grid h-9 w-9 place-items-center rounded-full bg-paper text-navy">
+                          <Icon size={18} />
+                        </span>
+                        <span className="min-w-0 flex-1">
+                          <small className="block text-[10px] uppercase tracking-[.12em] text-muted">
+                            {label}
+                          </small>
+                          <strong className="text-sm text-navy">{value}</strong>
+                        </span>
+                        <Check className="text-[#23834a]" size={18} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Container>
       </section>
 
       <Container>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ArrowDown, Check, Mail, MapPin, ShieldCheck } from "lucide-react";
+import { ArrowDown, Check, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
 import { ContactForm } from "../components/ContactForm";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
@@ -102,6 +102,16 @@ export default function ContactPage() {
               <strong className="break-all text-sm text-navy">
                 info@yorkshirefortresssecurity.co.uk
               </strong>
+            </span>
+          </a>
+          <a
+            className="mt-3 flex items-start gap-4 border border-line p-4 transition hover:border-tan"
+            href="tel:+447435677545"
+          >
+            <Phone className="shrink-0 text-tan" />
+            <span>
+              <small className="block text-xs text-muted">Call our team</small>
+              <strong className="text-sm text-navy">07435 677545</strong>
             </span>
           </a>
           <div className="mt-3 flex items-start gap-4 border border-line p-4">
