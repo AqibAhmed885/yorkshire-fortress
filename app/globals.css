@@ -172,15 +172,32 @@
   --animate-header-in: header-in 300ms ease-out;
 
   @keyframes header-in {
-    from { transform: translateY(-100%); }
-    to { transform: translateY(0); }
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
   }
 }
 
 @layer base {
-  html { scroll-behavior: smooth; }
-  body { @apply m-0 bg-white font-sans text-[17px] leading-[1.55] font-normal text-onyx; }
-  img { @apply block max-w-full; }
-  button { @apply cursor-pointer; }
-  h1, h2, h3, p { text-wrap: pretty; }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply m-0 bg-white font-sans text-[17px] leading-[1.55] font-normal text-onyx;
+  }
+  img {
+    @apply block max-w-full;
+  }
+  button {
+    @apply cursor-pointer;
+  }
+  h1,
+  h2,
+  h3,
+  p {
+    text-wrap: pretty;
+  }
 }

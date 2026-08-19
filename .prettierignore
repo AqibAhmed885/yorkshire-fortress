@@ -1,0 +1,10 @@
+.next
+dist
+node_modules
+out
+build
+coverage
+.wrangler
+.openai
+package-lock.json
+public

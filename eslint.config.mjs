@@ -1,6 +1,7 @@
 import { defineConfig, globalIgnores } from "eslint/config";
 import eslint from "@eslint/js";
 import next from "@next/eslint-plugin-next";
+import prettier from "eslint-config-prettier";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
@@ -8,13 +9,7 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 
 const eslintConfig = defineConfig([
-  globalIgnores([
-    ".next/**",
-    "dist/**",
-    "out/**",
-    "build/**",
-    "next-env.d.ts",
-  ]),
+  globalIgnores([".next/**", "dist/**", "out/**", "build/**", "next-env.d.ts"]),
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   react.configs.flat.recommended,
@@ -35,7 +30,11 @@ const eslintConfig = defineConfig([
         version: "detect",
       },
     },
+    rules: {
+      "@next/next/no-img-element": "off",
+    },
   },
+  prettier,
 ]);
 
 export default eslintConfig;

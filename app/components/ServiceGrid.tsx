@@ -7,7 +7,11 @@ export function ServiceGrid() {
   return (
     <div className="grid grid-cols-3 gap-4 max-lg:grid-cols-2 max-sm:grid-cols-1">
       {services.map((service) => (
-        <Link href={`/services/${service.slug}`} key={service.slug} className="group relative isolate min-h-[420px] overflow-hidden text-white max-sm:min-h-[390px]">
+        <Link
+          href={`/services/${service.slug}`}
+          key={service.slug}
+          className="group relative isolate min-h-[420px] overflow-hidden text-white max-sm:min-h-[390px]"
+        >
           <img
             className="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.055]"
             src={service.image}
@@ -19,9 +23,7 @@ export function ServiceGrid() {
             <ServiceIcon name={service.icon} />
           </span>
           <span className="absolute right-[52px] bottom-6 left-[22px]">
-            <strong className="mb-2 block text-[23px] leading-[1.15]">
-              {service.shortTitle}
-            </strong>
+            <strong className="mb-2 block text-[23px] leading-[1.15]">{service.shortTitle}</strong>
             <small className="block text-[13px] leading-[1.35] text-[#dce1e5]">
               {service.summary}
             </small>

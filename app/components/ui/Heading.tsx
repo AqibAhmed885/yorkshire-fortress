@@ -20,9 +20,31 @@ const sizeClasses: Record<HeadingSize, string> = {
   "2xl": "text-[clamp(52px,6.5vw,86px)] leading-[.92]",
 };
 
-const toneClasses: Record<HeadingTone, string> = { inherit: "", navy: "text-navy", onyx: "text-onyx", white: "text-white" };
-const weightClasses: Record<HeadingWeight, string> = { medium: "font-medium", semibold: "font-semibold", bold: "font-bold", extrabold: "font-extrabold" };
+const toneClasses: Record<HeadingTone, string> = {
+  inherit: "",
+  navy: "text-navy",
+  onyx: "text-onyx",
+  white: "text-white",
+};
+const weightClasses: Record<HeadingWeight, string> = {
+  medium: "font-medium",
+  semibold: "font-semibold",
+  bold: "font-bold",
+  extrabold: "font-extrabold",
+};
 
-export function Heading({ as: Component = "h2", className = "", size = "lg", tone = "navy", weight = "medium", ...props }: HeadingProps) {
-  return <Component className={`m-0 tracking-[-.035em] ${sizeClasses[size]} ${toneClasses[tone]} ${weightClasses[weight]} ${className}`.trim()} {...props} />;
+export function Heading({
+  as: Component = "h2",
+  className = "",
+  size = "lg",
+  tone = "navy",
+  weight = "medium",
+  ...props
+}: HeadingProps) {
+  return (
+    <Component
+      className={`m-0 tracking-[-.035em] ${sizeClasses[size]} ${toneClasses[tone]} ${weightClasses[weight]} ${className}`.trim()}
+      {...props}
+    />
+  );
 }
