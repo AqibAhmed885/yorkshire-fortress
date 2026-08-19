@@ -1,16 +1,18 @@
-import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 import { PageHero } from "../components/PageHero";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
 import { sectors } from "../data";
+import { createPageMetadata } from "../seo";
 import { kicker, lead, navyButton, section, sectionHeading } from "../styles";
 
-export const metadata: Metadata = {
-  title: "Sectors | Yorkshire Fortress Security",
+export const metadata = createPageMetadata({
+  title: "Security Solutions by Sector | Yorkshire Fortress Security",
   description:
-    "Security for construction, commercial property, education, retail, events and vacant premises.",
-};
+    "Tailored security for construction, commercial property, education, retail, events and vacant premises across Yorkshire and the UK.",
+  path: "/sectors",
+  keywords: ["construction site security", "commercial property security", "retail security"],
+});
 
 export default function SectorsPage() {
   return (

@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import {
   ArrowRight,
   Check,
@@ -12,14 +11,17 @@ import {
 import { PageHero } from "../components/PageHero";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
+import { createPageMetadata } from "../seo";
 import { kicker, kickerTan, navyButton, section, sectionHeading } from "../styles";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "About Us | Yorkshire Fortress Security",
+export const metadata = createPageMetadata({
+  title: "About Yorkshire Fortress Security | Professional Security",
   description:
-    "A Yorkshire-rooted security company built around professional people, clear standards and dependable service.",
-};
+    "Meet the Yorkshire-rooted security company built around professional people, clear standards, accountable delivery and dependable protection.",
+  path: "/about",
+  keywords: ["about Yorkshire Fortress Security", "Yorkshire security company"],
+});
 
 export default function AboutPage() {
   const values = [
@@ -75,7 +77,7 @@ export default function AboutPage() {
         eyebrow="About Yorkshire Fortress"
         title="Strong values. Capable people. Safer places."
         copy="A Yorkshire-rooted security partner committed to professional standards and dependable protection."
-              image="/media/school.jpg"
+        image="/media/school.jpg"
       />
       <section
         className={`${section} grid grid-cols-[.8fr_1.2fr] gap-[10vw] max-lg:grid-cols-1 max-lg:gap-7`}
@@ -130,7 +132,7 @@ export default function AboutPage() {
         <div className="min-h-[650px] max-sm:min-h-[390px]">
           <img
             className="h-full w-full object-cover"
-                      src="/media/insight-security-review-uk.jpg"
+            src="/media/insight-security-review-uk.jpg"
             alt="Security professional managing a busy public event"
           />
         </div>

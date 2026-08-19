@@ -1,39 +1,38 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
+import { StructuredData } from "./components/StructuredData";
 import "./globals.css";
+import { createPageMetadata, organizationJsonLd, siteConfig, websiteJsonLd } from "./seo";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const requestHeaders = await headers();
-  const host = requestHeaders.get("host") || "localhost:3003";
-  const origin = `${host.includes("localhost") ? "http" : "https"}://${host}`;
-  const title = "Yorkshire Fortress Security | Professional Security Services";
-  const description =
-    "Security guards, key holding, alarm response, door supervisors, vacant property inspection and event security.";
-  return {
-    title,
-    description,
-    icons: { icon: "/favicon.png" },
-    openGraph: {
-      title,
-      description,
-      type: "website",
-      images: [
-        {
-          url: `${origin}/og.png`,
-          width: 1536,
-          height: 805,
-          alt: "Yorkshire Fortress Security — Protection with Yorkshire strength",
-        },
-      ],
-    },
-    twitter: { card: "summary_large_image", title, description, images: [`${origin}/og.png`] },
-  };
-}
+export const metadata: Metadata = {
+  ...createPageMetadata({
+    title: siteConfig.defaultTitle,
+    description: siteConfig.defaultDescription,
+    path: "/",
+    imageAlt: "Yorkshire Fortress Security — protection with Yorkshire strength",
+    keywords: [
+      "security guards Yorkshire",
+      "key holding Yorkshire",
+      "alarm response Yorkshire",
+      "event security Yorkshire",
+    ],
+  }),
+  metadataBase: new URL(siteConfig.url),
+  applicationName: siteConfig.name,
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  category: "Security services",
+  icons: { icon: "/favicon.png", apple: "/favicon.png" },
+  manifest: "/manifest.webmanifest",
+};
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang={siteConfig.language}>
+      <body>
+        <StructuredData data={[organizationJsonLd, websiteJsonLd]} />
+        {children}
+      </body>
     </html>
   );
 }

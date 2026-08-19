@@ -1,16 +1,23 @@
-import type { Metadata } from "next";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { PageHero } from "../components/PageHero";
 import { ServiceGrid } from "../components/ServiceGrid";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
+import { createPageMetadata } from "../seo";
 import { kicker, kickerTan, lead, primaryButton, section, sectionHeading } from "../styles";
 
-export const metadata: Metadata = {
-  title: "Security Services | Yorkshire Fortress Security",
+export const metadata = createPageMetadata({
+  title: "Security Services in Yorkshire | Yorkshire Fortress Security",
   description:
-    "Security guards, key holding, alarm response, door supervisors, vacant property inspection and event security.",
-};
+    "Explore professional security guards, key holding, alarm response, door supervisors, vacant property inspection and event security across Yorkshire.",
+  path: "/services",
+  keywords: [
+    "security services Yorkshire",
+    "security guards Yorkshire",
+    "key holding and alarm response",
+    "vacant property inspection",
+  ],
+});
 
 export default function ServicesPage() {
   const steps = [

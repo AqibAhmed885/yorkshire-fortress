@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { ArrowRight, Mail } from "lucide-react";
 import { PageHero } from "../components/PageHero";
 import { SiteFooter } from "../components/SiteFooter";
@@ -9,12 +8,16 @@ import { Heading } from "../components/ui/Heading";
 import { InsightCard } from "../components/ui/InsightCard";
 import { Paragraph } from "../components/ui/Paragraph";
 import { insights } from "../data";
+import { createPageMetadata } from "../seo";
 import { kicker, kickerTan } from "../styles";
 
-export const metadata: Metadata = {
-  title: "Insights & News | Yorkshire Fortress Security",
-  description: "Practical security guidance for safer people, places and operations.",
-};
+export const metadata = createPageMetadata({
+  title: "Security Insights & News | Yorkshire Fortress Security",
+  description:
+    "Practical UK security guidance covering guarding, alarm response, vacant properties, door supervision, events and safer operations.",
+  path: "/insights",
+  keywords: ["UK security insights", "security advice for businesses", "security news"],
+});
 
 export default function InsightsPage() {
   return (

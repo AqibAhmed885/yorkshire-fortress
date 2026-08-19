@@ -53,6 +53,11 @@ test("keeps the completed site and current framework versions in source", async 
     eslintConfig,
     prettierConfig,
     vercelConfig,
+    seo,
+    robots,
+    sitemap,
+    manifest,
+    servicePage,
   ] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/data.ts", import.meta.url), "utf8"),
@@ -64,11 +69,32 @@ test("keeps the completed site and current framework versions in source", async 
     readFile(new URL("../eslint.config.mjs", import.meta.url), "utf8"),
     readFile(new URL("../.prettierrc.json", import.meta.url), "utf8"),
     readFile(new URL("../vercel.json", import.meta.url), "utf8"),
+    readFile(new URL("../app/seo.ts", import.meta.url), "utf8"),
+    readFile(new URL("../app/robots.ts", import.meta.url), "utf8"),
+    readFile(new URL("../app/sitemap.ts", import.meta.url), "utf8"),
+    readFile(new URL("../app/manifest.ts", import.meta.url), "utf8"),
+    readFile(new URL("../app/services/[slug]/page.tsx", import.meta.url), "utf8"),
   ]);
 
-  assert.match(page, /yorkshine-guard\.mp4/);
+  assert.match(page, /yorkshire-fortress-protection\.mp4/);
   assert.match(page, /autoPlay[\s\S]*muted[\s\S]*loop[\s\S]*playsInline/);
   assert.match(layout, /Yorkshire Fortress Security/);
+  assert.match(layout, /metadataBase/);
+  assert.match(layout, /organizationJsonLd/);
+  assert.match(layout, /websiteJsonLd/);
+  assert.match(seo, /alternates: \{ canonical \}/);
+  assert.match(seo, /openGraph/);
+  assert.match(seo, /twitter/);
+  assert.match(seo, /max-image-preview/);
+  assert.match(robots, /sitemap: absoluteUrl\("\/sitemap\.xml"\)/);
+  assert.match(robots, /userAgent: "\*"/);
+  assert.match(sitemap, /services\.map/);
+  assert.match(sitemap, /insights\.map/);
+  assert.match(manifest, /Yorkshire Fortress Security/);
+  assert.match(servicePage, /"@type": "Service"/);
+  assert.match(servicePage, /"@type": "BreadcrumbList"/);
+  assert.match(insightPage, /"@type": "Article"/);
+  assert.match(insightPage, /"@type": "BreadcrumbList"/);
   assert.doesNotMatch(page + layout, /codex-preview|_sites-preview|SkeletonPreview/);
   assert.match(contact, /Let’s plan protection that fits\./);
   assert.match(contact, /<ContactForm \/>/);
@@ -86,6 +112,7 @@ test("keeps the completed site and current framework versions in source", async 
   );
   assert.equal((data.match(/\bsuitableFor:\s*\[/g) ?? []).length, serviceSlugs.length);
   assert.equal((data.match(/\bclientReceives:\s*\[/g) ?? []).length, serviceSlugs.length);
+  assert.equal((data.match(/\bpublishedAt:\s*"/g) ?? []).length, insightSlugs.length);
   for (const slug of serviceSlugs) {
     assert.match(data, new RegExp(`slug: "${slug}"`));
   }

@@ -1,15 +1,17 @@
-import type { Metadata } from "next";
 import { ArrowDown, Check, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
 import { ContactForm } from "../components/ContactForm";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
+import { createPageMetadata } from "../seo";
 import { kicker, kickerTan, lead, sectionHeading } from "../styles";
 
-export const metadata: Metadata = {
-  title: "Contact Yorkshire Fortress Security",
+export const metadata = createPageMetadata({
+  title: "Contact Yorkshire Fortress Security | Request a Review",
   description:
-    "Request a security review for guarding, key holding, alarm response, door supervision, vacant property inspection or event security.",
-};
+    "Contact Yorkshire Fortress Security on 07435 677545 to discuss guarding, key holding, alarm response, property inspection or event security.",
+  path: "/contact",
+  keywords: ["contact security company Yorkshire", "request security review"],
+});
 const steps = [
   {
     number: "01",

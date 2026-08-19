@@ -361,6 +361,7 @@ export type Insight = {
   copy: string;
   image: string;
   date: string;
+  publishedAt: string;
   readTime: string;
   author: string;
   takeaways: string[];
@@ -376,6 +377,7 @@ export const insights: Insight[] = [
     copy: "A practical way to balance visible presence, property inspections and out-of-hours response.",
     image: "/media/insight-guarding-model-uk.jpg",
     date: "8 August 2026",
+    publishedAt: "2026-08-08",
     readTime: "7 min read",
     author: "Yorkshire Fortress Security",
     takeaways: [
@@ -409,6 +411,7 @@ export const insights: Insight[] = [
     copy: "The hidden risks of out-of-hours callouts—and how professional response cover protects your people.",
     image: "/media/insight-alarm-response-uk.jpg",
     date: "31 July 2026",
+    publishedAt: "2026-07-31",
     readTime: "6 min read",
     author: "Yorkshire Fortress Security",
     takeaways: [
@@ -442,6 +445,7 @@ export const insights: Insight[] = [
     copy: "From perimeter and access checks to condition reporting, here is what a robust inspection looks like.",
     image: "/media/insight-vehicle-patrol-uk.jpg",
     date: "22 July 2026",
+    publishedAt: "2026-07-22",
     readTime: "7 min read",
     author: "Yorkshire Fortress Security",
     takeaways: [
@@ -475,6 +479,7 @@ export const insights: Insight[] = [
     copy: "Why early planning and good communication matter as much as the number of officers on site.",
     image: "/media/insight-event-security-uk.jpg",
     date: "14 July 2026",
+    publishedAt: "2026-07-14",
     readTime: "7 min read",
     author: "Yorkshire Fortress Security",
     takeaways: [
@@ -508,6 +513,7 @@ export const insights: Insight[] = [
     copy: "Small operational changes can create new gaps. These are the indicators to watch.",
     image: "/media/insight-security-review-uk.jpg",
     date: "6 July 2026",
+    publishedAt: "2026-07-06",
     readTime: "8 min read",
     author: "Yorkshire Fortress Security",
     takeaways: [
@@ -541,6 +547,7 @@ export const insights: Insight[] = [
     copy: "How professional teams protect venues while preserving the right atmosphere for guests.",
     image: "/media/insight-door-supervision-uk.jpg",
     date: "28 June 2026",
+    publishedAt: "2026-06-28",
     readTime: "7 min read",
     author: "Yorkshire Fortress Security",
     takeaways: [

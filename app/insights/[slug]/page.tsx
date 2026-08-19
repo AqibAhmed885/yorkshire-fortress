@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import { notFound, redirect } from "next/navigation";
 import { ArrowLeft, ArrowRight, Check, ChevronRight, Clock, UserRound } from "lucide-react";
 import Link from "next/link";
+import { StructuredData } from "../../components/StructuredData";
 import { SiteFooter } from "../../components/SiteFooter";
 import { SiteHeader } from "../../components/SiteHeader";
 import { Button } from "../../components/ui/Button";
@@ -11,6 +11,7 @@ import { Heading } from "../../components/ui/Heading";
 import { InsightCard } from "../../components/ui/InsightCard";
 import { Paragraph } from "../../components/ui/Paragraph";
 import { insights } from "../../data";
+import { absoluteUrl, createPageMetadata, siteConfig } from "../../seo";
 
 type InsightPageProps = { params: Promise<{ slug: string }> };
 
@@ -28,27 +29,16 @@ export async function generateMetadata({ params }: InsightPageProps): Promise<Me
   const insight = insights.find((item) => item.slug === canonicalSlug);
   if (!insight) return {};
 
-  const requestHeaders = await headers();
-  const host = requestHeaders.get("host") || "localhost:3003";
-  const origin = `${host.includes("localhost") ? "http" : "https"}://${host}`;
-  const image = `${origin}${insight.image}`;
-
-  return {
-    title: insight.title,
+  return createPageMetadata({
+    title: `${insight.title} | Yorkshire Fortress Security`,
     description: insight.copy,
-    openGraph: {
-      title: insight.title,
-      description: insight.copy,
-      type: "article",
-      images: [{ url: image, alt: insight.title }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: insight.title,
-      description: insight.copy,
-      images: [image],
-    },
-  };
+    path: `/insights/${insight.slug}`,
+    image: insight.image,
+    imageAlt: insight.title,
+    keywords: [insight.category, insight.title, "UK security advice"],
+    type: "article",
+    publishedTime: insight.publishedAt,
+  });
 }
 
 export default async function InsightDetailPage({ params }: InsightPageProps) {
@@ -59,9 +49,51 @@ export default async function InsightDetailPage({ params }: InsightPageProps) {
   if (!insight) notFound();
 
   const related = insights.filter((item) => item.slug !== canonicalSlug).slice(0, 3);
+  const articleUrl = absoluteUrl(`/insights/${insight.slug}`);
+  const articleJsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "@id": `${articleUrl}#article`,
+      headline: insight.title,
+      description: insight.copy,
+      image: absoluteUrl(insight.image),
+      datePublished: insight.publishedAt,
+      dateModified: insight.publishedAt,
+      mainEntityOfPage: articleUrl,
+      inLanguage: siteConfig.language,
+      author: { "@id": `${siteConfig.url}/#organization` },
+      publisher: { "@id": `${siteConfig.url}/#organization` },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: siteConfig.url,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Insights & news",
+          item: absoluteUrl("/insights"),
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: insight.title,
+          item: articleUrl,
+        },
+      ],
+    },
+  ];
 
   return (
     <main>
+      <StructuredData data={articleJsonLd} />
       <SiteHeader />
       <article>
         <header className="bg-navy-deep pt-[175px] pb-[90px] text-white max-sm:pt-[135px] max-sm:pb-[65px]">

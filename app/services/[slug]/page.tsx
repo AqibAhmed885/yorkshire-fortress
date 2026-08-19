@@ -9,9 +9,11 @@ import {
   PhoneCall,
 } from "lucide-react";
 import { ServiceIcon } from "../../components/ServiceIcon";
+import { StructuredData } from "../../components/StructuredData";
 import { SiteFooter } from "../../components/SiteFooter";
 import { SiteHeader } from "../../components/SiteHeader";
 import { services } from "../../data";
+import { absoluteUrl, createPageMetadata, siteConfig } from "../../seo";
 import { kicker, kickerTan, navyButton, sectionHeading } from "../../styles";
 import Link from "next/link";
 
@@ -31,7 +33,14 @@ export async function generateMetadata({
   const canonicalSlug = legacyServiceSlugs[slug] ?? slug;
   const service = services.find((item) => item.slug === canonicalSlug);
   return service
-    ? { title: `${service.title} | Yorkshire Fortress Security`, description: service.summary }
+    ? createPageMetadata({
+        title: `${service.title} | Yorkshire Fortress Security`,
+        description: service.summary,
+        path: `/services/${service.slug}`,
+        image: service.image,
+        imageAlt: `${service.title} from Yorkshire Fortress Security`,
+        keywords: [service.title, `${service.title} Yorkshire`, "security services Yorkshire"],
+      })
     : {};
 }
 
@@ -43,8 +52,51 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   if (!service) notFound();
   const currentIndex = services.findIndex((item) => item.slug === canonicalSlug);
   const next = services[(currentIndex + 1) % services.length];
+  const serviceUrl = absoluteUrl(`/services/${service.slug}`);
+  const serviceJsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": `${serviceUrl}#service`,
+      name: service.title,
+      serviceType: service.title,
+      description: service.summary,
+      url: serviceUrl,
+      image: absoluteUrl(service.image),
+      areaServed: {
+        "@type": "Country",
+        name: "United Kingdom",
+      },
+      provider: { "@id": `${siteConfig.url}/#organization` },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: siteConfig.url,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Services",
+          item: absoluteUrl("/services"),
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: service.title,
+          item: serviceUrl,
+        },
+      ],
+    },
+  ];
   return (
     <main>
+      <StructuredData data={serviceJsonLd} />
       <SiteHeader />
       <section
         className="grid min-h-screen grid-cols-[1fr_1fr] overflow-hidden bg-navy-deep pt-[142px] text-white max-lg:grid-cols-1 max-sm:pt-[126px]"
