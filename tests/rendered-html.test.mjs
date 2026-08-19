@@ -77,7 +77,7 @@ test("keeps the completed site and current framework versions in source", async 
   assert.match(page, /Smart Technology\./);
   assert.match(page, /dedicated security management app/);
   assert.match(page, /Live officer visibility/);
-  assert.match(page, /security-management-app-v1\.png/);
+  assert.match(page, /\/media\/app\.png/);
   assert.match(page, /live officer status, patrol checkpoints and incident reports/);
 
   assert.equal(
