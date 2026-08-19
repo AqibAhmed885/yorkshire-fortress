@@ -1,5 +1,4 @@
 import {
-  Activity,
   ArrowRight,
   Castle,
   Check,
@@ -8,7 +7,6 @@ import {
   MapPin,
   Radio,
   ShieldCheck,
-  Smartphone,
 } from "lucide-react";
 import { ServiceGrid } from "./components/ServiceGrid";
 import { SiteFooter } from "./components/SiteFooter";
@@ -214,76 +212,15 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative mx-auto w-full max-w-[470px] py-5">
-            <span className="absolute top-[8%] -right-[16%] h-48 w-48 rounded-full bg-tan/20 max-sm:-right-[5%]" />
-            <span className="absolute bottom-[4%] -left-[13%] h-36 w-36 rounded-full border-[28px] border-navy/8 max-sm:-left-[3%]" />
-            <div className="relative rounded-[48px] border-[9px] border-navy-deep bg-navy-deep p-3 shadow-[0_35px_80px_rgba(16,31,50,.22)]">
-              <div className="absolute top-3 left-1/2 z-10 h-5 w-28 -translate-x-1/2 rounded-full bg-navy-deep" />
-              <div className="overflow-hidden rounded-[32px] bg-[#f5f6f7]">
-                <div className="bg-navy px-6 pt-12 pb-7 text-white">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <span className="grid h-10 w-10 place-items-center rounded-full bg-tan text-navy-deep">
-                        <Smartphone size={21} />
-                      </span>
-                      <span>
-                        <small className="block text-[10px] uppercase tracking-[.15em] text-white/55">
-                          Fortress Control
-                        </small>
-                        <strong className="text-sm">Live operations</strong>
-                      </span>
-                    </div>
-                    <span className="flex items-center gap-2 text-[11px] font-bold text-[#bce5cb]">
-                      <span className="h-2 w-2 rounded-full bg-[#64d793]" /> Live
-                    </span>
-                  </div>
-                </div>
-                <div className="p-5">
-                  <div className="rounded-2xl bg-white p-5 shadow-[0_12px_35px_rgba(16,31,50,.08)]">
-                    <div className="flex items-start justify-between gap-4">
-                      <span>
-                        <small className="block text-[10px] font-bold uppercase tracking-[.14em] text-muted">
-                          Officer management
-                        </small>
-                        <strong className="mt-1 block text-lg text-navy">
-                          Site coverage active
-                        </strong>
-                      </span>
-                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#e8f5ed] text-[#23834a]">
-                        <ShieldCheck size={21} />
-                      </span>
-                    </div>
-                    <div className="mt-5 h-2 overflow-hidden rounded-full bg-[#e5e8eb]">
-                      <span className="block h-full w-[82%] rounded-full bg-tan" />
-                    </div>
-                  </div>
-
-                  <div className="mt-4 grid gap-3">
-                    {[
-                      { icon: MapPin, label: "Location status", value: "On site" },
-                      { icon: ClipboardCheck, label: "Assigned duties", value: "In progress" },
-                      { icon: Activity, label: "Management updates", value: "Connected" },
-                    ].map(({ icon: Icon, label, value }) => (
-                      <div
-                        className="flex items-center gap-3 rounded-xl border border-[#e1e4e7] bg-white p-4"
-                        key={label}
-                      >
-                        <span className="grid h-9 w-9 place-items-center rounded-full bg-paper text-navy">
-                          <Icon size={18} />
-                        </span>
-                        <span className="min-w-0 flex-1">
-                          <small className="block text-[10px] uppercase tracking-[.12em] text-muted">
-                            {label}
-                          </small>
-                          <strong className="text-sm text-navy">{value}</strong>
-                        </span>
-                        <Check className="text-[#23834a]" size={18} />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="relative mx-auto flex w-full max-w-[590px] items-center justify-center py-2 max-lg:mt-10">
+            <span className="absolute top-[8%] -right-[8%] h-48 w-48 rounded-full bg-tan/25 max-sm:right-0" />
+            <span className="absolute bottom-[5%] -left-[5%] h-40 w-40 rounded-full border-[30px] border-navy/8 max-sm:left-0" />
+            <span className="absolute top-1/2 right-[2%] left-[2%] h-3/5 -translate-y-1/2 rounded-[48%] bg-navy/5 blur-3xl" />
+            <img
+              className="relative z-10 h-auto max-h-[790px] w-full object-contain drop-shadow-[0_35px_35px_rgba(16,31,50,.22)]"
+              src="/media/security-management-app-v1.png"
+              alt="Fortress Control mobile security management app showing live officer status, patrol checkpoints and incident reports"
+            />
           </div>
         </Container>
       </section>
