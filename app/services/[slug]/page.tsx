@@ -70,7 +70,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             Discuss your requirements <ArrowRight />
           </a>
         </div>
-        <div className="relative min-h-[578px] overflow-hidden rounded-l-[50%] max-lg:min-h-[480px] max-lg:rounded-t-[250px] max-lg:rounded-b-none max-sm:min-h-[370px]">
+        <div className="relative min-h-[578px] overflow-hidden rounded-tl-[50%] max-lg:min-h-[480px] max-lg:rounded-t-[250px] max-lg:rounded-b-none max-sm:min-h-[370px]">
           <img className="h-full w-full object-cover" src={service.image} alt="" />
           <span className="absolute right-[8%] bottom-[8%] grid size-16 place-items-center border border-white/40 bg-navy-deep/90 text-tan">
             <ServiceIcon name={service.icon} size={32} />

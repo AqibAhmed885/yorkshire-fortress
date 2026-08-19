@@ -175,7 +175,7 @@ export const services: Service[] = [
       "Licensed door supervisors who balance firm access control with a professional customer experience.",
     intro:
       "The best door supervision is calm, observant and proportionate. Our SIA-licensed teams help venues manage entry, protect guests and staff, prevent disorder and respond professionally to challenging situations.",
-    image: "/media/door-supervisors.jpeg",
+    image: "/media/door-supervisors.png",
     icon: "badge",
     features: [
       "SIA-licensed personnel",

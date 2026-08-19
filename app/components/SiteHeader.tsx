@@ -92,7 +92,7 @@ export function SiteHeader({ solid = false }: { solid?: boolean }) {
                 <div className="grid grid-cols-2 gap-px bg-line">
                   {services.map((service) => (
                     <Link
-                      className="group grid grid-cols-[28px_1fr_auto] items-center gap-2.5 bg-white px-4 py-[18px] transition-colors hover:bg-paper"
+                      className="group grid grid-cols-[1fr_auto] items-center gap-2.5 bg-white px-4 py-[18px] transition-colors hover:bg-paper"
                       href={`/services/${service.slug}`}
                       key={service.slug}
                     >
@@ -100,7 +100,7 @@ export function SiteHeader({ solid = false }: { solid?: boolean }) {
                         {service.shortTitle}
                       </strong>
                       <ArrowUpRight
-                        className="text-tan transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                        className="text-navy transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                         size={17}
                       />
                     </Link>

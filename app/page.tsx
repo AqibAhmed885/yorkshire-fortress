@@ -80,10 +80,10 @@ export default function Home() {
             loop
             playsInline
             preload="metadata"
-            poster="/media/security-patrol-poster.jpg"
+            poster="/media/yorkshire-fortress-protection-poster.jpg"
             aria-hidden="true"
           >
-            <source src="/media/yorkshine-guard.mp4" type="video/mp4" />
+            <source src="/media/yorkshire-fortress-protection.mp4" type="video/mp4" />
           </video>
           <img
             className="absolute inset-0 -bottom-16 hidden h-full w-full object-cover motion-reduce:block"

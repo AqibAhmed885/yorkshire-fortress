@@ -75,7 +75,7 @@ export default function AboutPage() {
         eyebrow="About Yorkshire Fortress"
         title="Strong values. Capable people. Safer places."
         copy="A Yorkshire-rooted security partner committed to professional standards and dependable protection."
-        image="/media/security-guard.jpg"
+              image="/media/school.jpg"
       />
       <section
         className={`${section} grid grid-cols-[.8fr_1.2fr] gap-[10vw] max-lg:grid-cols-1 max-lg:gap-7`}
@@ -130,7 +130,7 @@ export default function AboutPage() {
         <div className="min-h-[650px] max-sm:min-h-[390px]">
           <img
             className="h-full w-full object-cover"
-            src="/media/door-supervisors.jpg"
+                      src="/media/insight-security-review-uk.jpg"
             alt="Security professional managing a busy public event"
           />
         </div>
