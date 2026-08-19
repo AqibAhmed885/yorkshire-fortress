@@ -364,6 +364,7 @@ export type Insight = {
   readTime: string;
   author: string;
   takeaways: string[];
+  paragraphHeadings: string[];
   content: string[];
 };
 
@@ -373,7 +374,7 @@ export const insights: Insight[] = [
     category: "Security planning",
     title: "How to choose the right guarding model for your site",
     copy: "A practical way to balance visible presence, patrol coverage and out-of-hours response.",
-    image: "/media/security-guard.jpg",
+    image: "/media/insight-guarding-model-uk.jpg",
     date: "8 August 2026",
     readTime: "7 min read",
     author: "Yorkshire Fortress Security",
@@ -381,6 +382,15 @@ export const insights: Insight[] = [
       "Start with the risks and operating pattern, not a predetermined number of officers.",
       "Combine static guarding, patrols and response when different hours require different cover.",
       "Write measurable duties and review the evidence regularly.",
+    ],
+    paragraphHeadings: [
+      "Start with the site, not the headcount",
+      "Build the risk picture",
+      "When static guarding adds value",
+      "Where mobile patrols fit",
+      "Complete the out-of-hours plan",
+      "Measure the service",
+      "Design the model around outcomes",
     ],
     content: [
       "Choosing a guarding model is not simply a decision about whether to place an officer at the front door. The right arrangement reflects how a site operates, when people and assets are most exposed, and what a successful security outcome looks like. A busy office, an active construction site and a vacant warehouse may all need a visible deterrent, but the duties, timings and level of interaction will be very different.",
@@ -397,7 +407,7 @@ export const insights: Insight[] = [
     category: "Key holding",
     title: "Why employees should not attend alarm activations alone",
     copy: "The hidden risks of out-of-hours callouts—and how professional response cover protects your people.",
-    image: "/media/key-holding.jpg",
+    image: "/media/insight-alarm-response-uk.jpg",
     date: "31 July 2026",
     readTime: "6 min read",
     author: "Yorkshire Fortress Security",
@@ -405,6 +415,15 @@ export const insights: Insight[] = [
       "An alarm activation is an unknown situation until the premises has been assessed.",
       "A documented professional response removes pressure from employees and lone workers.",
       "Key holding is strongest when access, escalation and reporting are agreed in advance.",
+    ],
+    paragraphHeadings: [
+      "The unknown behind every alarm",
+      "Risks beyond an intruder",
+      "How professional key holding works",
+      "What the response plan must cover",
+      "Create an auditable incident record",
+      "Keep managers in control",
+      "Protect people as well as property",
     ],
     content: [
       "An alarm call in the middle of the night often creates an immediate operational problem: someone needs to attend, but nobody yet knows what they will find. Asking a manager or employee to drive to the premises may appear convenient, especially when most activations prove harmless. The difficulty is that every genuine incident initially looks much the same as a false alarm, and an untrained lone attendee can arrive before the risks are understood.",
@@ -421,7 +440,7 @@ export const insights: Insight[] = [
     category: "Mobile patrols",
     title: "What a useful vehicle patrol inspection should include",
     copy: "From perimeter checks to time-stamped reporting, here is what a robust visit looks like.",
-    image: "/media/mobile-patrol.jpg",
+    image: "/media/insight-vehicle-patrol-uk.jpg",
     date: "22 July 2026",
     readTime: "7 min read",
     author: "Yorkshire Fortress Security",
@@ -429,6 +448,15 @@ export const insights: Insight[] = [
       "Every patrol needs site-specific checkpoints and an agreed purpose.",
       "Officers should inspect, record and escalate—not merely drive past the premises.",
       "Varied timing and trend reviews make patrols a stronger deterrent.",
+    ],
+    paragraphHeadings: [
+      "More than a drive-by",
+      "Start at the perimeter",
+      "Inspect every access point",
+      "Spot facilities risks early",
+      "Use timing as a deterrent",
+      "Leave useful evidence",
+      "Turn every visit into assurance",
     ],
     content: [
       "A mobile patrol is valuable when it creates a visible deterrent and produces reliable evidence that vulnerable areas have been checked. A vehicle passing the entrance is not enough. The officer needs a defined task, safe access, meaningful inspection points and instructions for what to do when something is wrong. Without those elements, the client receives activity but very little assurance.",
@@ -445,7 +473,7 @@ export const insights: Insight[] = [
     category: "Event security",
     title: "Building safety into the guest experience",
     copy: "Why early planning and good communication matter as much as the number of officers on site.",
-    image: "/media/event-security.jpg",
+    image: "/media/insight-event-security-uk.jpg",
     date: "14 July 2026",
     readTime: "7 min read",
     author: "Yorkshire Fortress Security",
@@ -453,6 +481,15 @@ export const insights: Insight[] = [
       "Security planning should follow the complete guest journey from arrival to departure.",
       "Clear roles and communications help teams intervene early and proportionately.",
       "Professional security can protect the atmosphere as well as the venue.",
+    ],
+    paragraphHeadings: [
+      "Safety begins before the gates open",
+      "Map the complete guest journey",
+      "Match people to licensed roles",
+      "Build a clear communications structure",
+      "Make professionalism part of security",
+      "Plan for welfare and crowd pressure",
+      "Protect the atmosphere as well as the venue",
     ],
     content: [
       "Guests rarely separate security from the rest of an event experience. The queue, welcome, ticket check, search process and first interaction with staff all shape how organised and reassuring the occasion feels. Effective event security protects people and restricted areas while helping movement remain calm. That balance begins in the planning stage, not when the doors open.",
@@ -469,7 +506,7 @@ export const insights: Insight[] = [
     category: "Risk management",
     title: "Six warning signs your site security plan needs a review",
     copy: "Small operational changes can create new gaps. These are the indicators to watch.",
-    image: "/media/alarm-response.jpg",
+    image: "/media/insight-security-review-uk.jpg",
     date: "6 July 2026",
     readTime: "8 min read",
     author: "Yorkshire Fortress Security",
@@ -477,6 +514,15 @@ export const insights: Insight[] = [
       "Operational changes can make an old security plan inaccurate without creating an obvious failure.",
       "Recurring exceptions and weak reporting are signals to investigate, not background noise.",
       "Review responsibilities, instructions and escalation routes after every material change.",
+    ],
+    paragraphHeadings: [
+      "Security plans can age quietly",
+      "1. Repeated exception reports",
+      "2. People bypass access controls",
+      "3. The physical site has changed",
+      "4–5. Escalation and records are unclear",
+      "6. Cover no longer matches operating hours",
+      "Turn the review into action",
     ],
     content: [
       "A security plan can become outdated while appearing to operate normally. Officers still attend, alarms still set and reports still arrive, but the environment around those activities may have changed. New tenants, altered opening hours, construction work, staff turnover or different stock can introduce exposure that the original instructions never considered. Regular review is how an organisation finds those gaps before an incident does.",
@@ -493,7 +539,7 @@ export const insights: Insight[] = [
     category: "Door supervision",
     title: "Firm, fair and welcoming: modern door supervision",
     copy: "How professional teams protect venues while preserving the right atmosphere for guests.",
-    image: "/media/door-supervisors.jpg",
+    image: "/media/insight-door-supervision-uk.jpg",
     date: "28 June 2026",
     readTime: "7 min read",
     author: "Yorkshire Fortress Security",
@@ -501,6 +547,15 @@ export const insights: Insight[] = [
       "The door team represents the venue from the first moment of the guest experience.",
       "Consistent policies and early communication reduce avoidable conflict.",
       "Observation, welfare awareness and accurate records continue after admission.",
+    ],
+    paragraphHeadings: [
+      "Judgement matters as much as presence",
+      "Start with a clear venue policy",
+      "A professional welcome strengthens control",
+      "Handle refusals consistently",
+      "Supervision continues inside",
+      "Record what matters",
+      "Brief, support and lead the team",
     ],
     content: [
       "Modern door supervision is built on judgement and communication as much as physical presence. A door team protects the licence, staff, guests and reputation of a venue, often while managing queues and making rapid decisions in a public setting. The strongest supervisors remain approachable and calm while applying clear boundaries consistently.",

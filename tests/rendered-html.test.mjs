@@ -86,13 +86,23 @@ test("keeps the completed site and current framework versions in source", async 
     assert.match(data, new RegExp(`slug: "${slug}"`));
   }
   const articleBodies = [...data.matchAll(/content:\s*\[([\s\S]*?)\n\s*\],/g)];
+  const articleHeadingGroups = [...data.matchAll(/paragraphHeadings:\s*\[([\s\S]*?)\n\s*\],/g)];
   assert.equal(articleBodies.length, insightSlugs.length);
-  for (const [, body] of articleBodies) {
-    assert.ok((body.match(/^\s*"/gm) ?? []).length >= 6);
+  assert.equal(articleHeadingGroups.length, insightSlugs.length);
+  for (let index = 0; index < articleBodies.length; index += 1) {
+    const paragraphCount = (articleBodies[index][1].match(/^\s*"/gm) ?? []).length;
+    const headingCount = (articleHeadingGroups[index][1].match(/^\s*"/gm) ?? []).length;
+    assert.ok(paragraphCount >= 6);
+    assert.equal(headingCount, paragraphCount);
   }
+  assert.equal(
+    (data.match(/image: "\/media\/insight-.*-uk\.jpg"/g) ?? []).length,
+    insightSlugs.length,
+  );
   assert.match(insightPage, /generateStaticParams/);
   assert.match(insightPage, /generateMetadata/);
   assert.match(insightPage, /insight\.content\.map/);
+  assert.match(insightPage, /insight\.paragraphHeadings\[index\]/);
 
   assert.match(packageJson, /"@next\/eslint-plugin-next": "16\.2\.12"/);
   assert.match(packageJson, /"next": "16\.2\.12"/);

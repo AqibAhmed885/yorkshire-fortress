@@ -101,14 +101,16 @@ export default async function InsightDetailPage({ params }: InsightPageProps) {
             <p className="mb-8 text-[23px] leading-[1.55] font-semibold text-navy">
               {insight.copy}
             </p>
-            <div className="space-y-7">
+            <div className="space-y-11">
               {insight.content.map((paragraph, index) => (
-                <Paragraph
-                  className="m-0 text-[18px] leading-[1.75] text-[#3e4650]"
-                  key={`${insight.slug}-${index}`}
-                >
-                  {paragraph}
-                </Paragraph>
+                <section key={`${insight.slug}-${index}`}>
+                  <Heading as="h2" className="mb-4" size="sm" weight="bold">
+                    {insight.paragraphHeadings[index]}
+                  </Heading>
+                  <Paragraph className="m-0 text-[18px] leading-[1.75] text-[#3e4650]">
+                    {paragraph}
+                  </Paragraph>
+                </section>
               ))}
             </div>
             <div className="mt-12 border-l-4 border-tan bg-paper p-7">
