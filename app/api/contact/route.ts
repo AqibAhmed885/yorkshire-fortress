@@ -7,6 +7,8 @@ const allowedServices = new Set([
   "Multiple services",
   "Not sure yet",
 ]);
+const brandMarkUrl = "https://www.yorkshirefortresssecurity.co.uk/brand/mark-colour.png";
+const brandLogoUrl = "https://www.yorkshirefortresssecurity.co.uk/brand/logo-dark.png";
 
 type ContactRequest = {
   name?: unknown;
@@ -130,23 +132,48 @@ export async function POST(request: Request) {
     )
     .join("");
   const html = `
-    <div style="margin:0;padding:28px;background:#f3f0e9;font-family:Arial,sans-serif;color:#273442">
-      <div style="max-width:680px;margin:0 auto;background:#ffffff;border-top:6px solid #d8b36a">
-        <div style="padding:28px;background:#10243c;color:#ffffff">
-          <p style="margin:0 0 8px;color:#d8b36a;font-size:12px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase">Yorkshire Fortress Security</p>
-          <h1 style="margin:0;font-size:28px;line-height:1.2">New website enquiry</h1>
-        </div>
-        <div style="padding:28px">
-          <table style="width:100%;border-collapse:collapse;font-size:15px" role="presentation">
-            ${detailRows}
-          </table>
-          <div style="margin-top:24px;padding:20px;border-left:4px solid #d8b36a;background:#f8f7f3">
-            <h2 style="margin:0 0 10px;color:#10243c;font-size:18px">Requirements</h2>
-            <p style="margin:0;white-space:pre-wrap;line-height:1.65">${escapeHtml(message)}</p>
-          </div>
-          <p style="margin:24px 0 0;font-size:13px;color:#66717c">Reply to this email to respond directly to ${escapeHtml(name)}.</p>
-        </div>
-      </div>
+    <div style="margin:0;padding:32px 14px;background:#f3f0e9;font-family:Arial,sans-serif;color:#273442">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:680px;margin:0 auto;border-collapse:collapse;background:#ffffff;border-top:6px solid #d8b36a;box-shadow:0 12px 30px rgba(16,36,60,.12)">
+        <tr>
+          <td style="padding:22px 28px;background:#ffffff">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse">
+              <tr>
+                <td style="vertical-align:middle">
+                  <img src="${brandLogoUrl}" width="250" alt="Yorkshire Fortress Security" style="display:block;width:250px;max-width:82%;height:auto;border:0" />
+                </td>
+                <td style="width:54px;text-align:right;vertical-align:middle">
+                  <img src="${brandMarkUrl}" width="36" height="50" alt="" style="display:inline-block;width:36px;height:50px;border:0" />
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:30px 28px;background:#10243c;color:#ffffff">
+            <p style="margin:0 0 9px;color:#d8b36a;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">New security enquiry</p>
+            <h1 style="margin:0;font-size:29px;line-height:1.2;color:#ffffff">A new website enquiry has arrived.</h1>
+            <p style="margin:12px 0 0;color:#dce4ec;font-size:14px;line-height:1.6">The complete client details and security requirements are below.</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:30px 28px;background:#ffffff">
+            <table style="width:100%;border-collapse:collapse;font-size:15px;border:1px solid #e4ded2" role="presentation">
+              ${detailRows}
+            </table>
+            <div style="margin-top:24px;padding:20px;border-left:4px solid #d8b36a;background:#f8f7f3">
+              <h2 style="margin:0 0 10px;color:#10243c;font-size:18px">Security requirements</h2>
+              <p style="margin:0;white-space:pre-wrap;line-height:1.65;color:#273442">${escapeHtml(message)}</p>
+            </div>
+            <p style="margin:24px 0 0;font-size:13px;line-height:1.6;color:#66717c">Reply to this email to respond directly to <strong style="color:#10243c">${escapeHtml(name)}</strong>.</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:20px 28px;background:#10243c;text-align:center;color:#dce4ec;font-size:12px;line-height:1.6">
+            Yorkshire Fortress Security &nbsp;•&nbsp; Professional &nbsp;•&nbsp; Vigilant &nbsp;•&nbsp; Dependable<br />
+            <a href="https://www.yorkshirefortresssecurity.co.uk/" style="color:#d8b36a;text-decoration:none">www.yorkshirefortresssecurity.co.uk</a>
+          </td>
+        </tr>
+      </table>
     </div>`;
 
   try {

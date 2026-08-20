@@ -116,6 +116,10 @@ test("keeps the completed site and current framework versions in source", async 
   assert.match(contactRoute, /replyTo: email/);
   assert.match(contactRoute, /escapeHtml/);
   assert.match(contactRoute, /allowedServices/);
+  assert.match(contactRoute, /yorkshirefortresssecurity\.co\.uk\/brand\/mark-colour\.png/);
+  assert.match(contactRoute, /yorkshirefortresssecurity\.co\.uk\/brand\/logo-dark\.png/);
+  assert.match(contactRoute, /#10243c/);
+  assert.match(contactRoute, /#d8b36a/);
   assert.match(envExample, /RESEND_API_KEY=\n/);
   assert.doesNotMatch(envExample, /re_[A-Za-z0-9]/);
   assert.match(page, /Smart Technology\./);
