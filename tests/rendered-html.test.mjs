@@ -35,6 +35,7 @@ test("Next.js build contains every public route", async () => {
   assert.equal(appPaths["/sectors/page"], "app/sectors/page.js");
   assert.equal(appPaths["/services/page"], "app/services/page.js");
   assert.equal(appPaths["/contact/page"], "app/contact/page.js");
+  assert.equal(appPaths["/api/contact/route"], "app/api/contact/route.js");
   assert.equal(appPaths["/services/[slug]/page"], "app/services/[slug]/page.js");
   assert.ok(routes.staticRoutes.some((route) => route.page === "/"));
   assert.ok(routes.dynamicRoutes.some((route) => route.page === "/services/[slug]"));
@@ -58,6 +59,9 @@ test("keeps the completed site and current framework versions in source", async 
     sitemap,
     manifest,
     servicePage,
+    contactForm,
+    contactRoute,
+    envExample,
   ] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/data.ts", import.meta.url), "utf8"),
@@ -74,6 +78,9 @@ test("keeps the completed site and current framework versions in source", async 
     readFile(new URL("../app/sitemap.ts", import.meta.url), "utf8"),
     readFile(new URL("../app/manifest.ts", import.meta.url), "utf8"),
     readFile(new URL("../app/services/[slug]/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/components/ContactForm.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/api/contact/route.ts", import.meta.url), "utf8"),
+    readFile(new URL("../.env.example", import.meta.url), "utf8"),
   ]);
 
   assert.match(page, /yorkshire-fortress-protection\.mp4/);
@@ -100,6 +107,17 @@ test("keeps the completed site and current framework versions in source", async 
   assert.match(contact, /<ContactForm \/>/);
   assert.match(contact, /tel:\+447435677545/);
   assert.match(contact, /07435 677545/);
+  assert.match(contactForm, /fetch\("\/api\/contact"/);
+  assert.match(contactForm, /Send my enquiry/);
+  assert.doesNotMatch(contactForm, /mailto:/);
+  assert.match(contactRoute, /new Resend\(apiKey\)/);
+  assert.match(contactRoute, /resend\.emails\.send/);
+  assert.match(contactRoute, /process\.env\.RESEND_API_KEY/);
+  assert.match(contactRoute, /replyTo: email/);
+  assert.match(contactRoute, /escapeHtml/);
+  assert.match(contactRoute, /allowedServices/);
+  assert.match(envExample, /RESEND_API_KEY=\n/);
+  assert.doesNotMatch(envExample, /re_[A-Za-z0-9]/);
   assert.match(page, /Smart Technology\./);
   assert.match(page, /dedicated security management app/);
   assert.match(page, /Live officer visibility/);
@@ -145,6 +163,7 @@ test("keeps the completed site and current framework versions in source", async 
   assert.match(packageJson, /"build": "next build --webpack"/);
   assert.match(packageJson, /"tailwindcss": "4\.3\.3"/);
   assert.match(packageJson, /"vinext": "1\.0\.0-beta\.4"/);
+  assert.match(packageJson, /"resend": "\^6\.21\.0"/);
   assert.match(packageJson, /"lint:fix": "eslint \. --fix"/);
   assert.match(packageJson, /"format": "prettier --write \."/);
   assert.match(packageJson, /"format:check": "prettier --check \."/);

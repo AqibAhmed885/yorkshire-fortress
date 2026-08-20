@@ -5,37 +5,46 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { services } from "../data";
 import { kicker, navyButton } from "../styles";
 
-const enquiryEmail = "info@yorkshirefortresssecurity.co.uk";
 const inputClass =
   "w-full border border-line bg-white px-4 py-3.5 text-[15px] text-onyx outline-none transition focus:border-navy focus:ring-2 focus:ring-navy/10";
 
 export function ContactForm() {
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [statusMessage, setStatusMessage] = useState("");
 
-  function prepareEmail(event: FormEvent<HTMLFormElement>) {
+  async function sendEnquiry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const form = new FormData(event.currentTarget);
-    const name = String(form.get("name") ?? "");
-    const email = String(form.get("email") ?? "");
-    const phone = String(form.get("phone") ?? "Not provided");
-    const organisation = String(form.get("organisation") ?? "Not provided");
-    const service = String(form.get("service") ?? "General security enquiry");
-    const location = String(form.get("location") ?? "Not provided");
-    const message = String(form.get("message") ?? "");
-    const subject = `Security enquiry — ${service}`;
-    const body = [
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Phone: ${phone || "Not provided"}`,
-      `Organisation: ${organisation || "Not provided"}`,
-      `Service: ${service}`,
-      `Site location: ${location || "Not provided"}`,
-      "",
-      "Requirements:",
-      message,
-    ].join("\n");
-    setStatus("Your email app should open with your enquiry ready to send.");
-    window.location.href = `mailto:${enquiryEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    if (status === "submitting") return;
+
+    const formElement = event.currentTarget;
+    const form = new FormData(formElement);
+    const payload = Object.fromEntries(form.entries());
+    setStatus("submitting");
+    setStatusMessage("Sending your enquiry securely…");
+
+    try {
+      const result = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = (await result.json().catch(() => null)) as { message?: string } | null;
+
+      if (!result.ok) {
+        throw new Error(data?.message || "We could not send your enquiry. Please try again.");
+      }
+
+      formElement.reset();
+      setStatus("success");
+      setStatusMessage(data?.message || "Thank you. Your enquiry has been sent.");
+    } catch (error) {
+      setStatus("error");
+      setStatusMessage(
+        error instanceof Error
+          ? error.message
+          : "We could not send your enquiry. Please try again or call our team.",
+      );
+    }
   }
 
   const field = (label: string, control: React.ReactNode, full = false) => (
@@ -53,10 +62,17 @@ export function ContactForm() {
           Request a security review.
         </h2>
         <p className="mb-0 text-muted">
-          Share a few details and we’ll prepare your enquiry for our team.
+          Share a few details and we’ll send your enquiry securely to our team.
         </p>
       </div>
-      <form className="grid grid-cols-2 gap-x-5 gap-y-6 max-sm:grid-cols-1" onSubmit={prepareEmail}>
+      <form
+        className="relative grid grid-cols-2 gap-x-5 gap-y-6 max-sm:grid-cols-1"
+        onSubmit={sendEnquiry}
+      >
+        <label className="absolute -left-[10000px]" aria-hidden="true">
+          Website
+          <input name="website" type="text" autoComplete="off" tabIndex={-1} />
+        </label>
         {field(
           "Your name *",
           <input
@@ -136,19 +152,27 @@ export function ContactForm() {
           true,
         )}
         <div className="col-span-2 flex items-center justify-between gap-5 max-sm:col-span-1 max-sm:flex-col max-sm:items-start">
-          <button className={navyButton} type="submit">
-            Prepare my enquiry <ArrowRight size={19} />
+          <button
+            className={`${navyButton} disabled:cursor-not-allowed disabled:opacity-60`}
+            type="submit"
+            disabled={status === "submitting"}
+          >
+            {status === "submitting" ? "Sending enquiry…" : "Send my enquiry"}
+            <ArrowRight size={19} />
           </button>
           <p className="m-0 flex items-center gap-2 text-xs text-muted">
             <CheckCircle2 size={16} /> We only use your details to respond to this enquiry.
           </p>
         </div>
-        {status && (
+        {status !== "idle" && (
           <p
-            className="col-span-2 m-0 border-l-4 border-tan bg-white p-3 text-sm font-bold text-navy max-sm:col-span-1"
+            className={`col-span-2 m-0 border-l-4 bg-white p-3 text-sm font-bold max-sm:col-span-1 ${
+              status === "error" ? "border-red-600 text-red-800" : "border-tan text-navy"
+            }`}
             role="status"
+            aria-live="polite"
           >
-            {status}
+            {statusMessage}
           </p>
         )}
       </form>
